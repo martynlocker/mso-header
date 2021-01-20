@@ -1,0 +1,66 @@
+.burger {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 1000;
+  margin: 0 auto;
+  width: 25px;
+  height: 26px;
+  color: #fff;
+  cursor: pointer;
+
+  @media screen and (max-width: 991px) {
+    display: block;
+  }
+
+  span {
+    background-color: #fff;
+    display: block;
+    height: 2px;
+    transition: 0.5s all;
+    width: 25px;
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      width: 25px;
+      height: 2px;
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      transition-duration: 0.3s;
+    }
+
+    &:before {
+      top: 8px;
+      transition-property: top, transform;
+    }
+
+    &:after {
+      top: 16px;
+      transition-property: top, transform;
+    }
+
+    &.js-active {
+      background-color: transparent;
+
+      &:before,
+      &:after {
+        transition-delay: 0s, 0.3s;
+        background-color: #fff;
+      }
+
+      &:before {
+        top: 10px;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        top: 10px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
